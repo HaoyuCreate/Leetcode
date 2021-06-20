@@ -1,0 +1,8 @@
+# Issue 1:
+##log:
+    ZeroDivisionError: division by zero
+##cause:
+Special input 0
+
+##solution:
+Add a new conditional statements

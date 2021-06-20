@@ -1,0 +1,20 @@
+Issue #1
+##cause:
+Input: "words and 987"
+
+Issue #2
+##cause:
+Input: "3.14159"
+Solution: int(float(string)), when string --> int, be careful of the decimal number, turn the number into float can avoid error<string-->int>
+
+Issue #3
+##cause:
+"    -88827   5655  U"
+
+Issue #4
+##cause:
+"    -5---+++"
+
+Issue $5
+##cause:
+"+-12"
