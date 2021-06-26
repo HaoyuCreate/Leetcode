@@ -1,7 +1,0 @@
-The difficulty of this problem is whether it has the capability to couple with long inputs
-
-The solution1(O(n！/[(n-3)!3!])  and solution2 with python itertool-combination should travel the entire input, which make the
-solutions quite slow.
-
-The direction of solving the problem is find the other two nunbers which can sum to 0, when giving one number i
-Recall the 1TwoSum problem
