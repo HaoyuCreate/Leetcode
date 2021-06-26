@@ -3,6 +3,7 @@ class Solution:
         answer = [];
         for i in range(len(nums)):
             first = nums[i]
+            import copy
             tmp = copy.copy(nums)
             tmp.remove(first)
             second = target - first
