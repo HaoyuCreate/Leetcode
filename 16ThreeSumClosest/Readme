@@ -1,0 +1,3 @@
+The problem is similar to Problem 15.
+Considering sum of three numbers plus one free target, there are 4 free variables and one relation.
+Thus, we have 4 - 1 = 3 free dimensions,
