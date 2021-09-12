@@ -92,10 +92,38 @@ class Solution:
             twoSum(new_nums,first_rest,all_possible) #ans=[],ans=[[x1,x2],ans=[[x1,x2],[y1,y2]]]
         return all_possible
 
+    def threeSum5(self, nums):
+        res = []
+        nums.sort()
+
+        def twoSumII(nums, i: int, res):
+            lo, hi = i + 1, len(nums) - 1
+            while (lo < hi):
+                sum = nums[i] + nums[lo] + nums[hi]
+                if sum < 0:
+                    lo += 1
+                elif sum > 0:
+                    hi -= 1
+                else:
+                    res.append([nums[i], nums[lo], nums[hi]])
+                    lo += 1
+                    hi -= 1
+                    while lo < hi and nums[lo] == nums[lo - 1]:
+                        lo += 1
+
+        for i in range(len(nums)):
+            if nums[i] > 0:
+                break
+            if i == 0 or nums[i - 1] != nums[i]:
+                twoSumII(nums, i, res)
+        return res
+
+
+
 
 if __name__=='__main__':
     solver = Solution()
     x =  [-1,0,1,2,-1,-4]
     # x = [3,-9,3,9,-6,-1,-2,8,6,-7,-14,-15,-7,5,2,-7,-4,2,-12,-7,-1,-2,1,-15,-13,-4,0,-9,-11,7,4,7,13,14,-7,-8,-1,-2,7,-10,-2,1,-10,6,-9,-1,14,2,-13,9,10,-7,-8,-4,-14,-5,-1,1,1,4,-15,13,-12,13,12,-11,12,-12,2,-3,-7,-14,13,-9,7,-11,5,-1,-2,-1,-7,-7,0,-7,-4,1,3,3,9,11,14,10,1,-13,8,-9,13,-2,-6,1,10,-5,-6,0,1,8,4,13,14,9,-2,-15,-13]
-    out = solver.threeSum4(x)
+    out = solver.threeSum5(x)
     print(out)
