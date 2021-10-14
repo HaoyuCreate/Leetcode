@@ -47,7 +47,8 @@ class Solution:
         else:
             return None
 
-
+    def removeNthFromEnd2(self, head, n):
+        pass
 
 
     def Array2SingleList(self,array):
