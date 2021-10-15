@@ -64,7 +64,7 @@ class Solution:
         print(curr.data)
         if curr.next:
             curr.next = curr.next.next
-            return head
+            return dummy.next # not the head, it is very important!!!!
         else:
             return None
 
