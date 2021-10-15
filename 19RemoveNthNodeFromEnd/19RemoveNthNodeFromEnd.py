@@ -61,7 +61,6 @@ class Solution:
             if i-n>2:
                 second = second.next
         curr = second
-        print(curr.data)
         if curr.next:
             curr.next = curr.next.next
             return dummy.next # not the head, it is very important!!!!
