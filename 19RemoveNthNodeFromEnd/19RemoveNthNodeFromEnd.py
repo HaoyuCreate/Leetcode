@@ -48,7 +48,26 @@ class Solution:
             return None
 
     def removeNthFromEnd2(self, head, n):
-        pass
+        dummy = Node(None,None)
+        dummy.next = head
+        curr = dummy
+        first = curr # the first pointer
+        second = curr # the second pointer
+        i = 1
+        j = 1
+        while first:
+            first = first.next
+            i += 1
+            if i-n>2:
+                second = second.next
+        curr = second
+        print(curr.data)
+        if curr.next:
+            curr.next = curr.next.next
+            return head
+        else:
+            return None
+
 
 
     def Array2SingleList(self,array):
@@ -69,9 +88,9 @@ class Solution:
 
 if __name__=='__main__':
     solution = Solution()
-    input = [1,2]
+    input = [1,2,3,4,5]
     n = 2
     head = solution.Array2SingleList(input)
-    singlelist = solution.removeNthFromEnd(head,n)
+    singlelist = solution.removeNthFromEnd2(head,n)
     output = solution.SingleList2Arrary(singlelist)
     print(output)
