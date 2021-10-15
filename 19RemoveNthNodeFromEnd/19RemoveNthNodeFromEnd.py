@@ -47,6 +47,27 @@ class Solution:
         else:
             return None
 
+    def _removeNthFromEnd(self,head,n):
+        '''two path method'''
+        length = 1
+        dummy = Node(None,head) # real lenth l = length - 1
+        curr = dummy
+        while curr:
+            length += 1
+            curr = curr.next
+
+        position = length - n
+        i = 1
+        curr = dummy
+        while i < position-1 and curr.next:
+            i += 1
+            curr = curr.next
+        if curr.next:
+            curr.next = curr.next.next
+            return dummy.next
+        else:
+            return None
+
     def removeNthFromEnd2(self, head, n):
         dummy = Node(None,None)
         dummy.next = head
@@ -87,9 +108,10 @@ class Solution:
 
 if __name__=='__main__':
     solution = Solution()
-    input = [1,2,3,4,5]
-    n = 2
+    input = [1,2]
+    n = 1
+
     head = solution.Array2SingleList(input)
-    singlelist = solution.removeNthFromEnd2(head,n)
+    singlelist = solution._removeNthFromEnd(head,n)
     output = solution.SingleList2Arrary(singlelist)
     print(output)
