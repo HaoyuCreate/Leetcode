@@ -38,6 +38,30 @@ class Solution:
         return longest
 
 
+    def longestValidParentheses3(self,s):
+        stack = []
+        dummy = '#'
+        s = s+dummy
+        max_group_len = sub_valid_len = curr_group_len = 0
+        for index in range(len(s)):
+            if not stack:
+                sub_valid_len = sub_valid_len + curr_group_len
+                curr_group_len = 0
+                if s[index] == '(':
+                    stack.append(s[index])
+                else:
+                    max_group_len = max(max_group_len,sub_valid_len)
+                    sub_valid_len = 0
+            else:
+                if self.Matched(stack[-1],s[index]):
+                    stack.pop()
+                    curr_group_len += 2
+                elif s[index]=='(':
+                    stack.append(s[index])
+            print(index,curr_group_len,sub_valid_len,max_group_len)
+        max_group_len = max(max_group_len,curr_group_len)
+        return max_group_len
+
     def Matched(self,s1,s2):
         matched = False
         if s1 =='(' and s2 == ')':
@@ -46,5 +70,5 @@ class Solution:
 
 if __name__=='__main__':
     solution = Solution()
-    s = "(())())()()"
-    print(solution.longestValidParentheses2(s))
+    s = "(())("
+    print('result=',solution.longestValidParentheses3(s))
