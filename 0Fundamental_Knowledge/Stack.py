@@ -22,7 +22,10 @@ class Stack:
             return None
 
     def Clear(self):
-        pass
+        return []
+
+    def len(self):
+        return len(self.array)
 
 if __name__=="__main__":
     stack = Stack(5)
