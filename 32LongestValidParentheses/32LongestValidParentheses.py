@@ -58,8 +58,10 @@ class Solution:
                     curr_group_len += 2
                 elif s[index]=='(':
                     stack.append(s[index])
+                else:
+                    max_group_len = max(max_group_len,sub_valid_len, curr_group_len)
             print(index,curr_group_len,sub_valid_len,max_group_len)
-        max_group_len = max(max_group_len,curr_group_len)
+
         return max_group_len
 
     def Matched(self,s1,s2):
@@ -70,5 +72,5 @@ class Solution:
 
 if __name__=='__main__':
     solution = Solution()
-    s = "(())("
+    s = "(()(((()"
     print('result=',solution.longestValidParentheses3(s))
