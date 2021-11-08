@@ -3,7 +3,7 @@ class ListNode:
         self.val = val
         self.next = next
 class Solution:
-    def deleteDuplicates(self, head) ->:
+    def deleteDuplicates(self, head):
         curr = head
         while curr:
             if curr.next and (curr.next.val == curr.val):
