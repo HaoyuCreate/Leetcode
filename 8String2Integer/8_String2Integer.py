@@ -1,33 +1,31 @@
 class Solution:
+    MAX_VALUE = 2 ** 31 - 1
+    MIN_VALUE = -2 ** 31
+
     def myAtoi(self, s: str) -> int:
         '''when the input s is not very long'''
-        import re
-        threshold = 2 ** 31
+        # remove the leading space
         s = s.strip(' ')  # .replace(' ', '')
         # # strip() removes space outside the string, replace(' ','') removes space inside the string
+        sign = 1
 
-        # if s is None:
-        #     return 0
+        first_valid_sign = True
+        valid_number = ''
+        for i in s:
+            if i in ['-', '+'] and first_valid_sign and len(valid_number) == 0:
+                first_valid_sign = False
+                sign = -1 if i == '-' else 1
+            elif i.isdigit():
+                valid_number += i
+            else:
+                break
 
-        # s = re.sub(r'[^0-9+-]', '.', s) # turn all alphabet into '.'
-        # string_list = s.split('.')
-        # tmp = string_list[0]
-        # # re.split(r'[+-]{2,}' split the sting by more than one '+' or '-', i.e '++++' and '--')
-        # # re.sub(r'\D'$,'') remove all non-digits from the bottom
-        # # out = re.sub(r'([\D])$','',re.split(r'[+-]{2,}',tmp)[0])
-        # tmp = re.split(r'^[+-]*',tmp)
-        # print(tmp)
-        tmp = re.findall(r'(^[+]{0,1}\d+)|(^[-]{0,1}\d+)',s)
-        if not tmp:
-            return 0
-        else:
-            out = tmp[0][0] if tmp[0][0]!='' else tmp[0][1]
-        out = int(float(out))
-        # if out > threshold - 1:
-        #     out = threshold - 1
-        # elif out < -threshold:
-        #     out = -threshold
-        return max(-2**31,min(out,2**31-1))
+        result = sign * int(valid_number) if valid_number.isdigit() else 0
+
+        # clip the result
+        result = max(min(result, self.MAX_VALUE), self.MIN_VALUE)
+
+        return result
 
 if __name__=='__main__':
     solver = Solution()
