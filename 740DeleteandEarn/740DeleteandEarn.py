@@ -10,7 +10,6 @@ class Solution:
         keyList = list(self.valueDict.keys())
         keyList.sort()
 
-        # dp[i] = max(dp[i-1],dp[i-2]+calPoints[keyList[i]]) refers to the max value at key=keyList[i]
 
         if len(keyList) == 1:
             return self.calPoints(keyList[0])
