@@ -46,17 +46,23 @@ class Solution:
 
         max_sum = curr_sum = nums[0]
 
-        while sidx < len(nums) + 1:
-            if curr_sum<=0:
+        # head = tail = 0
+
+        # optmised two pointer method
+        while sidx < len(nums):
+            if curr_sum < 0:
+                # head = tail = sidx  # 可以反回数组的子序列
                 fidx = sidx
-                curr_sum = nums[fidx]
-                max_sum = max(curr_sum,max_sum)
+                curr_sum = nums[fidx]  # reset the curr_sum to nums[fidx]
+                max_sum = max(max_sum, curr_sum)
                 sidx += 1
                 continue
 
-            curr_sum = curr_sum+nums[sidx]
-            max_sum = max(curr_sum,max_sum)
+            curr_sum = curr_sum + nums[sidx]
+            max_sum = max(max_sum, curr_sum)
             sidx += 1
+        # tail = sidx
+        # print(nums[head:tail])
         return max_sum
 
 if __name__=='__main__':
